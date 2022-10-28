@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+initialSize="0" : 커넥션의 초기 사이즈
+maxTotal="20" 	: 동시에 사용할 수 있는 최대 커넥션의 개수 (기본값: 8개)
+minIdle="5" 	: 최소한으로 유지하는 커넥션 연결 개수(기본값: 0개)
+maxIdle="20" 	: 반납할 때 최대한으로 유지되는 커넥션의 개수(기본값: 8개) 
+maxWaitMillis="5000" : 커넥션이 없을 때 대기 시간 (밀리초)
+ -->
+<Context>
+	<Resource
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/test01?useSSL=false"
+		name="jdbc/test01"
+		username="aws01"
+		password="1234"
+		initialSize="0"
+		maxTotal="20"
+		minIdle="5"
+		maxIdle="20"
+		maxWaitMillis="5000"
+	/>
+</Context>
