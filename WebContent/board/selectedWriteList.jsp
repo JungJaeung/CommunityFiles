@@ -13,6 +13,7 @@
 <body>
 	<div id="container">
 <%
+	String listId = request.getParameter("listId");
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -22,7 +23,7 @@
 	try{
 		conn = JDBCUtil.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, "listId");
+		pstmt.setString(1, listId);
 		rs = pstmt.executeQuery();
 		String name = null;
 		String title = null;

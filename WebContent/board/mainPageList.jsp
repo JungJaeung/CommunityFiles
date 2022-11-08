@@ -8,8 +8,23 @@
 <title>게시판 메인 홈페이지</title>
 <style>
 	#container { margin: 0 auto; width: 1000px;}
-	
+	.showList:hover { cursor: pointer; background-color: gray; opacity: 0.5;}
+	.listNumber { display: hidden;}
 </style>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		let selectedForm = document.selectedForm;
+		let showList = document.querySelectorAll(".showList");
+		console.log(showList);
+		console.log(selectedForm);
+		for(let i=0; i<showList.length; i++) {
+			showList[i].addEventListener("click", function(event) {
+				selectedForm[i].action = 'selectedWriteList.jsp';
+				selectedForm[i].submit();
+			})
+		}
+	})
+</script>
 </head>
 <%request.setCharacterEncoding("utf-8"); %>
 <body>
@@ -22,7 +37,7 @@
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	String sql = "select name, title, writeDate from boardList";
+	String sql = "select listId, name, title, writeDate from boardList";
 	
 	try {
 		conn = JDBCUtil.getConnection();
@@ -34,8 +49,9 @@
 			String title = rs.getString("title");
 			String writeTime = rs.getString("writeDate");
 			//해당 글에 해당하는 데이터의 정보를 다음 페이지에서 쓸수 있게 가져가야함.
-			out.print("<li><form action='selectedWriteList.jsp' method='post'><a href='#'>" + name +  "&emsp;&emsp;:&emsp;&emsp;" + title + "&emsp;&emsp;:&emsp;&emsp;" +  writeTime + "</a></form></li>");
-			out.print("");
+			out.print("<li class='showList'><form method='post' name='selectedForm' class='form'>" + name +  
+			"&emsp;&emsp;:&emsp;&emsp;" + title + "&emsp;&emsp;:&emsp;&emsp;" + 
+			writeTime + "<input type='text' value='"+ listId +"' class='listNumber' name='listId'></form></li>");
 		}
 	} catch(Exception e) {
 		e.printStackTrace();
