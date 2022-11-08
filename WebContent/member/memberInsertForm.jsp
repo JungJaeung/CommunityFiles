@@ -1,7 +1,5 @@
-<<<<<<< HEAD
+
 <%@ page import="java.sql.*, common.JDBCUtil" %>
-=======
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,14 +8,11 @@
 <meta charset="UTF-8">
 <title>회원가입 폼</title>
 <style>
-<<<<<<< HEAD
 	@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Hahmlet&display=swap');
 	h2 {font-family: 'Gugi', cursive;}
 	h1 {font-family: 'Hahmlet', serif;}
 	h1, h2 {text-align: center;}
-=======
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 	#container { width: 600px; margin: 0 auto;}
 	table { width: 100%; border: 1px solid black; border-collapse: collapse;}
 	tr { height: 40px;}
@@ -29,13 +24,10 @@
 	tr:first-child #btnIdCheck{ width: 120px; height: 30px;
 	background-color: #c84557; color: white; border: none; border-radius: 3px; cursor: pointer;}
 	.s_id { font-size: 0.9em;}
-<<<<<<< HEAD
 	
 	tr:nth-child(2), tr:nth-child(3), tr:nth-child(7), tr:nth-child(8) { height: 60px;}
 	.s_pwd, .s_pwd2, .s_email, .s_tel { font-size: 0.9em;}
 		
-=======
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 	/* 주소 필드 */ 
 	tr:nth-child(9) { height: 90px;}
 	tr:nth-child(9)	input { margin: 3px 0;}
@@ -64,7 +56,6 @@
 				form.submit();
 			}
 		})
-<<<<<<< HEAD
 		/*
 		정규표현식
 		^: 처음글자를  일치
@@ -140,7 +131,6 @@
 				f_tel = false;
 			}
 		})
-=======
 		
 		//비밀번호 유효성 검사
 		
@@ -152,8 +142,6 @@
 		
 		
 		//전화번호 유효성 검사	
-		
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 		
 		//주소 찾기 - 다음 라이브러리 프로퍼티 적용
 		let btnAddress = document.getElementById("btnAddress");
@@ -187,14 +175,12 @@
 				return;
 			}
 			if(pwd.value != pwd2.value) {
-<<<<<<< HEAD
 				alert("비밀번호가 일치하지 않습니다.");
 				form.pwd2.focus();
 				return;
 			}
 			if(pwd.value != pwd2.value) {
-=======
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
+
 				alert("비밀번호와 비밀번호 확인이 다릅니다");
 				form.pwd2.focus();
 				return;
@@ -214,7 +200,6 @@
 				form.email.focus();
 				return;
 			}
-<<<<<<< HEAD
 			if(!f_email) {
 				alert("이메일 형식이 맞지 않습니다.");
 				form.email.focus();
@@ -225,8 +210,6 @@
 				form.tel.focus();
 				return;
 			}
-=======
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 			if(!form.tel.value) {
 				alert("전화번호를 입력하세요.");
 				form.tel.focus();
@@ -250,10 +233,6 @@
 			
 			form.submit();
 		})
-<<<<<<< HEAD
-=======
-		
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 	})
 </script>
 </head>
@@ -296,22 +275,16 @@ else flag = "true"; 		// 중복 아이디 확인 버튼을 클릭했을 때
 				<th>비밀번호</th>
 				<td>
 					<input type="password" name="pwd" id="pwd"><br>
-<<<<<<< HEAD
 					<span class="s_pwd">비밀번호는 숫자, 영어소문자, 영대문자, 특수기호(!@#$%^&*)중 1개는 포함</span>
-=======
 					<span></span>
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 				</td>
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
 				<td>
 					<input type="password" name="pwd2" id="pwd2">
-<<<<<<< HEAD
 					<span class="s_pwd2"></span>
-=======
 					<span></span>
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 				</td>
 			</tr>
 			<tr>
@@ -333,22 +306,20 @@ else flag = "true"; 		// 중복 아이디 확인 버튼을 클릭했을 때
 				<th>이메일</th>
 				<td>
 					<input type="text" name="email" id="email" size="30">
-<<<<<<< HEAD
+
 					<span class="s_email"></span>
-=======
+
 					<span></span>
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 				</td>
 			</tr>
 			<tr>
 				<th>전화번호</th>
 				<td>
 					<input type="text" name="tel" id="tel">
-<<<<<<< HEAD
+
 					<span class="s_tel"></span>
-=======
+
 					<span></span>
->>>>>>> parent of 4edf879 (2022/10/28 게시판 자료 : 회원 정보 수정, 탈퇴, 조회확인 기능 추가.)
 				</td>
 			</tr>
 			<tr>
