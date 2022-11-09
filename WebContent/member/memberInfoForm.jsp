@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 정보 확인페이지</title>
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Hahmlet&display=swap');
@@ -214,13 +214,25 @@
 			
 			form.submit();
 		})
+		
+		let mainBtn = document.querySelector("#mainBtn");
+		mainBtn.addEventListener("click", function(event) {
+			//response.sendRedirect("../board/mainPageList.jsp");
+			window.location.href = '../board/mainPageList.jsp';
+		})
 	})
 </script>
 </head>
 <body>
 <%
-String id = request.getParameter("id");
-String pwd = request.getParameter("pwd");
+String id, pwd;
+if(session.getAttribute("memberId") == null) {	//로그인 할때 
+	id = request.getParameter("id");
+	pwd = request.getParameter("pwd");
+} else {	//이미 로그인 되어있는 경우
+	id = (String)session.getAttribute("memberId");
+	pwd = (String)session.getAttribute("memberPwd");
+}
 
 Connection conn = null;
 PreparedStatement pstmt = null;
@@ -248,8 +260,10 @@ try {
 		member.setAddress1(rs.getString("address1"));
 		member.setAddress2(rs.getString("address2"));
 		member.setRegDate(rs.getTimestamp("regDate"));
+		session.setAttribute("memberId", member.getId());
+		session.setAttribute("memberPwd", member.getPwd());
 	} else {
-		out.print("<></>");
+		out.print("<p>회원정보가 없습니다. 로그인을 해야합니다.</p>");
 	}
 } catch(Exception e) {
 	e.printStackTrace();
@@ -257,6 +271,7 @@ try {
 } finally {
 	JDBCUtil.close(conn, pstmt, rs);
 }
+System.out.println((String)session.getAttribute("memberId") + ", " + (String)session.getAttribute("memberPwd"));
 %>
 	<div id="container">
 		<h1>EZEN Cafe</h1>
@@ -267,7 +282,7 @@ try {
 			<tr>
 				<th width="20%">아이디</th>
 				<td width="80%">
-					<input type="text" name="id" id="id" value="" readonly>&ensp;
+					<input type="text" name="id" id="id" value="<%=session.getAttribute("memberId") %>" readonly>&ensp;
 					<input type="button" name="btnIdCheck" id="btnIdCheck" value="중복 아이디 확인">
 				</td>
 			</tr>
@@ -330,6 +345,7 @@ try {
 				<td colspan="2">
 					<input type="button" id="btnUpdate" value="정보수정">&emsp;
 					<input type="button" id="btnDelete" value="회원탈퇴">&emsp;
+					<input type="button" id="mainBtn" value="게시판으로 가기">&emsp;
 					<input type="button" id="btnLogin" value="돌아가기">&emsp;
 				</td>
 			</tr>			

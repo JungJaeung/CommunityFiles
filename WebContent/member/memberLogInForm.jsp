@@ -4,16 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>임시 회원 조회(임시폼)</title>
+<title>게시판 로그인</title>
+<style>
+</style>
 </head>
 <body>
-	<h2>회원정보 입력(임시폼)</h2>
+	<h2>로그인</h2>
 	<p>아이디와 비밀번호 입력</p>
 	<form action="memberInfoForm.jsp" method="post">
 		아이디: <input type="text" name="id">
 		비밀번호: <input type="text" name="pwd">
 		<input type="submit" value="전송">
 	</form>
-
 </body>
 </html>

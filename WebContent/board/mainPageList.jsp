@@ -10,6 +10,7 @@
 	#container { margin: 0 auto; width: 1000px;}
 	.showList:hover { cursor: pointer; background-color: gray; opacity: 0.5;}
 	.listNumber { visibility: hidden;}
+	#subNavi { background-color: gray; width: 200px; height: 50px;}
 </style>
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
@@ -23,16 +24,32 @@
 				selectedForm[i].submit();
 			})
 		}
+		
+		let memberInfo = document.querySelector("#memberInfo");
+		memberInfo.addEventListener("click", function(event) {
+			window.location.href = '../member/memberInfoForm.jsp';
+		})
+		
+		let writeNew = document.querySelector("#writeNew");
+		writeNew.addEventListener("click", function(event) {
+			window.location.href = 'writeNewList.jsp';
+		})
 	})
 </script>
 </head>
 <%request.setCharacterEncoding("utf-8"); %>
 <body>
 	<div id="container">
-		<h2>게시판 메인 페이지 글 조회페이지</h2>
+		<div id="subNavi">
+			<button id="memberInfo">내 정보</button>
+			<button id="memberOut">로그아웃</button>
+			<button id="writeNew">게시글 작성</button>
+		</div>
+		<h2>게시판 메인 페이지 글 조회페이지</h2> 
 		<ul>
 			<li><a>게시판의 내용이 여기에 표시됩니다.</a></li>
 <%
+	System.out.println((String)session.getAttribute("memberId") + ", " + (String)session.getAttribute("memberPwd"));
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
