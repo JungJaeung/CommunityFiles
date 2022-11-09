@@ -9,7 +9,7 @@
 <style>
 	#container { margin: 0 auto; width: 1000px;}
 	.showList:hover { cursor: pointer; background-color: gray; opacity: 0.5;}
-	.listNumber { display: hidden;}
+	.listNumber { visibility: hidden;}
 </style>
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
